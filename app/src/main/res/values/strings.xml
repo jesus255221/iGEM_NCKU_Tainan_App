@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Igem_ncku_tainan_2017</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="titles">
+        <item>Home</item>
+        <item>Regulator</item>
+        <item>Boat</item>
+    </string-array>
+
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Close drawer</string>
+</resources>
