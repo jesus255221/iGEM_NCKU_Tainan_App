@@ -3,6 +3,7 @@ package com.example.user.igem_ncku_tainan_2017;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -16,6 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     private String[] drawerTitles;
@@ -28,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = new Intent(this, NotificationService.class);
+        startService(intent);
         //Drawer processing
         drawerTitles = getResources().getStringArray(R.array.titles);
         drawerListview = (ListView) findViewById(R.id.drawer);//List item bind
@@ -44,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 R.string.open_drawer,
                 R.string.close_drawer
         );
-        drawerLayout.addDrawerListener(drawerToggle);
+        drawerLayout.setDrawerListener(drawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//Enable back arrow
         getSupportActionBar().setHomeButtonEnabled(true);//Enable back arrow
         //Drawer processing done
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void selectItem(int position) {//Item selected call fragment
+    public void selectItem(int position) {//Item selected call fragment
         currentPosition = position;//Synchornize the position of the current position
         Fragment fragment;
         switch (position) {

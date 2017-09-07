@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.Date;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,7 +47,6 @@ public class HomeFragment extends Fragment {
         adapter.setListener(new MyAdapter.Listener() {
             @Override
             public void onClick(int position) {
-                Toast.makeText(getContext(), position, Toast.LENGTH_SHORT).show();
                 Fragment fragment;
                 switch (position) {
                     case 0:
@@ -57,7 +59,7 @@ public class HomeFragment extends Fragment {
                         fragment = new HomeFragment();
                 }
                 //Fragment trade
-                FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, fragment);
                 ft.addToBackStack(null);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

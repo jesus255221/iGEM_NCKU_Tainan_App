@@ -21,8 +21,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private int[] imagesIds;
     private Listener listener;
 
-    public static interface Listener {
-        public void onClick(int position);
+    public interface Listener {
+        void onClick(int position);
     }
 
     @Override
@@ -33,19 +33,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         CardView cardView = holder.cardView;
         ImageView imageView = (ImageView) cardView.findViewById(R.id.card_view_icon_image);
         Drawable drawable = cardView.getResources().getDrawable(imagesIds[position], null);
         imageView.setImageDrawable(drawable);
         TextView textView = (TextView) cardView.findViewById(R.id.card_view_title);
         textView.setText(cardViewTitles[position]);
-        final int position_1 = position;
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null) {
-                    listener.onClick(position_1);
+                    listener.onClick(position);
                 }
             }
         });
@@ -71,6 +70,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     public void setListener(Listener listener) {
-        this.listener = this.listener;
+        this.listener = listener;
     }
 }
