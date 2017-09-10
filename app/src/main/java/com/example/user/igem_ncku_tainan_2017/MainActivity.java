@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this, NotificationService.class);
-        startService(intent);
         //Drawer processing
         drawerTitles = getResources().getStringArray(R.array.titles);
         drawerListview = (ListView) findViewById(R.id.drawer);//List item bind
@@ -78,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), drawerTitles[currentPosition], Toast.LENGTH_LONG).show();
             }
         });
+        Intent intent = new Intent(this, NotificationService.class);
+        startService(intent);
     }
 
     @Override
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();

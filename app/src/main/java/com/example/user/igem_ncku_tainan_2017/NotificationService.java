@@ -13,12 +13,6 @@ import android.support.annotation.Nullable;
 
 public class NotificationService extends IntentService {
 
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     * @param name Used to name the worker thread, important only for debugging.
-     */
-
     public NotificationService() {
         super("NotificationService");
     }
@@ -44,7 +38,7 @@ public class NotificationService extends IntentService {
                 stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification notification = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("iGEM NCKU Tainan")
+                .setContentTitle("Oops!")
                 .setContentText("WTF...")
                 .setAutoCancel(true)
                 .setPriority(Notification.PRIORITY_MAX)
