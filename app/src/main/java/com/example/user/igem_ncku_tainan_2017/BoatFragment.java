@@ -34,7 +34,7 @@ public class BoatFragment extends Fragment {
         titles[3] = "NO2";
         titles[4] = "GPS Data";
         int[] icons = new int[5];
-        icons[0] = R.drawable.linkitone;
+        icons[0] = R.drawable.linkit_one;
         icons[1] = R.drawable.ph_meter;
         icons[2] = R.drawable.thermometer;
         icons[3] = R.drawable.bubbles;

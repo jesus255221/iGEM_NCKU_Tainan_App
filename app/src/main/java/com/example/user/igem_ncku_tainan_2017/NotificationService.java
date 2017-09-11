@@ -8,6 +8,7 @@ import android.app.Service;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
@@ -21,7 +22,7 @@ public class NotificationService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         synchronized (this) {
             try {
-                wait(1000);
+                wait(5000);
             } catch (InterruptedException e){
                 e.printStackTrace();
             }

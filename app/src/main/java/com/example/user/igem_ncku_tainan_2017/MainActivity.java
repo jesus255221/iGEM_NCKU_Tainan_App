@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -76,8 +77,18 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), drawerTitles[currentPosition], Toast.LENGTH_LONG).show();
             }
         });
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        if (sharedPreferences.getString("DATE", null) == null) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("WTF", "ooooooo");
+            editor.commit();
+            Toast.makeText(this, "Not exist", Toast.LENGTH_SHORT).show();
+        }
         Intent intent = new Intent(this, NotificationService.class);
         startService(intent);
+        if (sharedPreferences.getString("WTF", null) != null) {
+            Toast.makeText(this, sharedPreferences.getString("WTF", null), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
