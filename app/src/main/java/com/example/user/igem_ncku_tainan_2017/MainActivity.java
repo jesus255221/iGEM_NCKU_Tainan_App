@@ -3,6 +3,7 @@ package com.example.user.igem_ncku_tainan_2017;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -18,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -77,18 +79,25 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), drawerTitles[currentPosition], Toast.LENGTH_LONG).show();
             }
         });
-        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("DATE", null) == null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("WTF", "ooooooo");
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            String date = simpleDateFormat.format(calendar.getTime());
+            editor.putString("DATE", date);
             editor.commit();
             Toast.makeText(this, "Not exist", Toast.LENGTH_SHORT).show();
         }
         Intent intent = new Intent(this, NotificationService.class);
         startService(intent);
-        if (sharedPreferences.getString("WTF", null) != null) {
-            Toast.makeText(this, sharedPreferences.getString("WTF", null), Toast.LENGTH_SHORT).show();
+        if (sharedPreferences.getString("DATE", null) != null) {
+            Toast.makeText(this, sharedPreferences.getString("DATE", null), Toast.LENGTH_SHORT).show();
         }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, -30);
+        Toast.makeText(this, simpleDateFormat.format(calendar.getTime()), Toast.LENGTH_SHORT).show();
     }
 
     @Override

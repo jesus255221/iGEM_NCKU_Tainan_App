@@ -12,6 +12,10 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class NotificationService extends IntentService {
 
     public NotificationService() {
@@ -20,15 +24,21 @@ public class NotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        synchronized (this) {
-            try {
-                wait(5000);
-            } catch (InterruptedException e){
-                e.printStackTrace();
+        SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        if (sharedPreferences.getString("DATE", null) != null) {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Calendar calender = Calendar.getInstance();
+            calender.add(Calendar.DAY_OF_MONTH, -30);
+            String date_1 = sharedPreferences.getString("DATE", null);
+            String date_2 = simpleDateFormat.format(calender.getTime());
+            if (date_1.equals(date_2)) {
+                showText();
             }
+            //showText(date_2);
         }
-        showText();
+        //showText();
     }
+
 
     private void showText() {
         Intent intent = new Intent(this, MainActivity.class);
@@ -39,8 +49,8 @@ public class NotificationService extends IntentService {
                 stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification notification = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Oops!")
-                .setContentText("WTF...")
+                .setContentTitle("No Problem")
+                .setContentText("It is time to clean the device")
                 .setAutoCancel(true)
                 .setPriority(Notification.PRIORITY_MAX)
                 .setDefaults(Notification.DEFAULT_VIBRATE)
