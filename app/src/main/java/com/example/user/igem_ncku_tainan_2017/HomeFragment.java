@@ -21,6 +21,8 @@ import java.util.Date;
  */
 public class HomeFragment extends Fragment {
 
+    private RecyclerView recyclerView;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -30,7 +32,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
+        recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_home, container, false);
         String[] cardview_titles = new String[2];
         cardview_titles[0] = "Regulator";
@@ -69,6 +71,12 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return recyclerView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        recyclerView.setAdapter(null);
     }
 
 }

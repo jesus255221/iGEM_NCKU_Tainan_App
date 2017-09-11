@@ -15,6 +15,8 @@ import android.view.ViewGroup;
  */
 public class BoatFragment extends Fragment {
 
+    private RecyclerView recyclerView;
+
 
     public BoatFragment() {
         // Required empty public constructor
@@ -25,7 +27,7 @@ public class BoatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
+        recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_boat, container, false);
         String[] titles = new String[5];
         titles[0] = "Linkit";
@@ -34,7 +36,7 @@ public class BoatFragment extends Fragment {
         titles[3] = "NO2";
         titles[4] = "GPS Data";
         int[] icons = new int[5];
-        icons[0] = R.drawable.linkit_one;
+        icons[0] = R.drawable.linkit_two;
         icons[1] = R.drawable.ph_meter;
         icons[2] = R.drawable.thermometer;
         icons[3] = R.drawable.bubbles;
@@ -46,4 +48,9 @@ public class BoatFragment extends Fragment {
         return recyclerView;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        recyclerView.setAdapter(null);
+    }
 }
