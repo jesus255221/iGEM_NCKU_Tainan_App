@@ -4,15 +4,11 @@ import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.IBinder;
-import android.support.annotation.Nullable;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -28,15 +24,13 @@ public class NotificationService extends IntentService {
         if (sharedPreferences.getString("DATE", null) != null) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
             Calendar calender = Calendar.getInstance();
-            calender.add(Calendar.DAY_OF_MONTH, -30);
+            calender.add(Calendar.DAY_OF_MONTH, -1);
             String date_1 = sharedPreferences.getString("DATE", null);
             String date_2 = simpleDateFormat.format(calender.getTime());
             if (date_1.equals(date_2)) {
                 showText();
             }
-            //showText(date_2);
         }
-        //showText();
     }
 
 

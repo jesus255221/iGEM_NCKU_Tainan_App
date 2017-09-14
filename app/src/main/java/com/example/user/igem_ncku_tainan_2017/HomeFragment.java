@@ -34,12 +34,14 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_home, container, false);
-        String[] cardview_titles = new String[2];
+        String[] cardview_titles = new String[3];
         cardview_titles[0] = "Regulator";
         cardview_titles[1] = "Boat";
-        int[] icon = new int[2];
+        cardview_titles[2] = "Official WebSite";
+        int[] icon = new int[3];
         icon[0] = R.drawable.device;
         icon[1] = R.drawable.boat;
+        icon[2] = R.drawable.ic_web_black_24dp;
 
         MyAdapter adapter = new MyAdapter(cardview_titles, icon);
         recyclerView.setAdapter(adapter);
@@ -57,6 +59,8 @@ public class HomeFragment extends Fragment {
                     case 1:
                         fragment = new BoatFragment();
                         break;
+                    case 2:
+                        startActivity(new Intent(getActivity(), WebView_Activity.class));
                     default:
                         fragment = new HomeFragment();
                 }
@@ -68,7 +72,6 @@ public class HomeFragment extends Fragment {
                 ft.commit();
             }
         });
-
         // Inflate the layout for this fragment
         return recyclerView;
     }

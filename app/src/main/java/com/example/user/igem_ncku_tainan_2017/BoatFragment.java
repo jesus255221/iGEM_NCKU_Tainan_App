@@ -1,6 +1,7 @@
 package com.example.user.igem_ncku_tainan_2017;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -42,6 +43,16 @@ public class BoatFragment extends Fragment {
         icons[3] = R.drawable.bubbles;
         icons[4] = R.drawable.worldwide;
         MyAdapter adapter = new MyAdapter(titles, icons);
+        adapter.setListener(new MyAdapter.Listener() {
+            @Override
+            public void onClick(int position) {
+                switch (position) {
+                    case 4:
+                        Intent intent = new Intent(getActivity(),MapsActivity.class);
+                        startActivity(intent);
+                }
+            }
+        });
         recyclerView.setAdapter(adapter);
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(layoutManager);
