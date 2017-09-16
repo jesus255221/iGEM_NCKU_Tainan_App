@@ -71,6 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ArrayList<Double> longitude = new ArrayList<>();
     private ArrayList<Double> latituude = new ArrayList<>();
     private ArrayList<LatLng> latLngs = new ArrayList<>();
+    private ArrayList<String> date = new ArrayList<>();
     private Runnable runnable;
     private Handler handler = new Handler();
     private GoogleMap mMap;
@@ -117,7 +118,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_LOCATION_REQUEST_CODE);
         }
         LatLng sydney = new LatLng(22.995571, 120.221539);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker of my home"));
+        mMap.addMarker(new MarkerOptions()
+                .position(sydney)
+                .title("Marker of my home")
+                .snippet("Welcome to tainan"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         runnable = new Runnable() {
             @Override
@@ -136,11 +140,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 latituude.add(i, response.body().getLocations().get(i).getLatitude() / 100);
                                 longitude.add(i, response.body().getLocations().get(i).getLongitude() / 100);
                                 latLngs.add(i, new LatLng(latituude.get(i), longitude.get(i)));
-                                if (i == (response.body().getLocations().size() - 1)) {
-                                    mMap.addMarker(new MarkerOptions()
-                                            .position(new LatLng(latituude.get(i), longitude.get(i)))
-                                    );
-                                }
+                                date.add(response.body().getLocations().get(i).getDate());
+                                mMap.addMarker(new MarkerOptions()
+                                        .position(new LatLng(latituude.get(i), longitude.get(i)))
+                                        .title(date.get(i))
+                                );
                             }
                         }
 

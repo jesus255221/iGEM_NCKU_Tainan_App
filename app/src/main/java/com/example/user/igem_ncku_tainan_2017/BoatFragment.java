@@ -46,10 +46,16 @@ public class BoatFragment extends Fragment {
         adapter.setListener(new MyAdapter.Listener() {
             @Override
             public void onClick(int position) {
+                Intent intent;
                 switch (position) {
-                    case 4:
-                        Intent intent = new Intent(getActivity(),MapsActivity.class);
+                    case 1:
+                        intent = new Intent(getActivity(),Graph.class);
                         startActivity(intent);
+                        break;
+                    case 4:
+                        intent = new Intent(getActivity(),MapsActivity.class);
+                        startActivity(intent);
+                        break;
                 }
             }
         });

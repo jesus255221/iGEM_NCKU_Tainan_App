@@ -12,11 +12,20 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\david\.android\build-cache\a066f89def42927816b5a40904c1bd324cbf7d3f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="987adec819c9a98faf215814f41195da48fc724e">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_55d447d06f366a2dda8dbdc364f0c7eb80c82db5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="7bd8aad8e0d2804fbf663df552716520e1c884d6">
+        sha1="84422376cd1518a9bdbeb57cb20651c8cd06d4f9">
         <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_554e35ce9304a709a975e5e6008d1d7265ae1c7a\classes.dex" />
     </item>
 
