@@ -2,6 +2,24 @@
 <items version="2" >
 
     <item
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\cd78b22faf0bba596f445fdd7c311825f261208c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="40e7757d9b06db670062ddb3cf5b30c129b2fd8c">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_4241510c32e2119628fdb6dfc3d94fc52a57f03b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\5e47396db91bc286fb0941ca5e45f7e72d2d8ddf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e454c414a069241ee08444d187f2dd3a702596b5">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_05c90e51cb23b45f7745f504dd52a9b3630b51c6.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
@@ -11,13 +29,139 @@
         <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_1312ca1dc3384dab213bf4230b9b5f805f1d450b\classes.dex" />
     </item>
     <item
-        is-multidex="true"
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\25d34a122befa72210ec0724648e3c92abf950b0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_8e7655e938ca6b8a60b05814d8aa3e9b76484dc1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASDK\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_bc57d0d25c01427930c76c3642e2caf3251d685e.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\david\.android\build-cache\a066f89def42927816b5a40904c1bd324cbf7d3f\output\jars\classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="987adec819c9a98faf215814f41195da48fc724e">
-        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_55d447d06f366a2dda8dbdc364f0c7eb80c82db5\classes.dex" />
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_55d447d06f366a2dda8dbdc364f0c7eb80c82db5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\dea1fb19c8a0fd60263c689181ce4565725b1e46\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1ccbc26be2c465c622a48310e8092241b01abe80">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_a8f09cd7e5fc030c07e4f1c5cd7f76484ff4a5f8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\25d34a122befa72210ec0724648e3c92abf950b0\output\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0_6e42168bb4b8245a741f90f45556ff3c86edeff6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\54630aba8d4b270d919c3fb3d810d22d6b15766a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8a36d229011e75f0caef408e1adf0d3fd4d94e02">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_2bdfc7ccac65891fa34d7d5f9381d461e5321184.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.8.0\5a11f020cce2d11eb71ba916700600e18c4547e7\okhttp-3.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5a11f020cce2d11eb71ba916700600e18c4547e7">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\okhttp-3.8.0_746f2ead94bb2609bdb22bc4758617662253eaad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\gson-2.7_bee463fef24d62a781e40e729cd1b25ede46e2de.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.3.0\bcacde6a8ccedcc56c127403d26b76072fe6214d\retrofit-2.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bcacde6a8ccedcc56c127403d26b76072fe6214d">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\retrofit-2.3.0_2c10474b0a955ceda3745ac2c1944eb003d52eda.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\51dd8d70178f6112f5468c89345d3c0031743f0b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="618485fef3ebe12127f7622abbc9b5b39057b5c2">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_6aca8948546f8b5f52ae2251797d3dcbcc9beef0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\okio-1.13.0_566a66bff6aec566776783baa563eb28fb361d97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\52933006b577ecd4cb9d34decfbb65d6fcd61bd3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_009dbfe3fa3c5960d3b52e4483e3cc4e1eb98032.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\b638079151dff7331d40652b4d00d3175d6463e9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3dee4ce5844d39d843d503fb8fe04e51e5bfffac">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_1a1c48c4f1fdd505fed905c944ccbce7c6c4caae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-scalars\2.3.0\1eaa5762cb25c31b1905e2bfdfef70a2e0495ea6\converter-scalars-2.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1eaa5762cb25c31b1905e2bfdfef70a2e0495ea6">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\converter-scalars-2.3.0_e46e91b389da2309802a8ea8d9c9a4fadd24c372.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\ASDK\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0_41c2b4916abe2a927412b3c117ef2efc80e41d94.jar" />
     </item>
     <item
         is-multidex="true"
@@ -27,6 +171,24 @@
         revision="25.0.3"
         sha1="84422376cd1518a9bdbeb57cb20651c8cd06d4f9">
         <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_554e35ce9304a709a975e5e6008d1d7265ae1c7a\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.android\build-cache\15d3c82b8acf2dc7445d4283ea2670353abd3b2a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\classes_4f9ae4ac571dbad99659393a7c2c003e3c65f789.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\david\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.3.0\9e09011e9767bb76b5e27c9b8223476b93b14631\converter-gson-2.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9e09011e9767bb76b5e27c9b8223476b93b14631">
+        <dex dex="D:\Android_Project\iGEM_NCKU_Tainan_App\app\build\intermediates\pre-dexed\debug\converter-gson-2.3.0_3e6deedf8d49c7e002b9a8bd647b7c7122109a27.jar" />
     </item>
 
 </items>

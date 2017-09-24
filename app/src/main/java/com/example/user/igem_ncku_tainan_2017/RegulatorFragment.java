@@ -24,10 +24,7 @@ public class RegulatorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
-                R.layout.fragment_boat, container, false);
-
-        return recyclerView;
+        return inflater.inflate(R.layout.fragment_regulator, container, false);
     }
 
 }
