@@ -40,7 +40,7 @@ import retrofit2.http.Path;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     public interface Service {
-        @FormUrlEncoded
+        /*@FormUrlEncoded
         @POST("/users")
         Call<JsonResponse> Create(
                 @Field("name") String name,
@@ -53,7 +53,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 @Path("id") String id,
                 @Field("name") String name,
                 @Field("glucose") String glucose
-        );
+        );*/
 
         /*@POST("/.json")
         Call<String> PostArray(
@@ -63,7 +63,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @GET("/users")
         Call<List<UsersResponses>> GetUsersInformations();*/
 
-        @GET("/locations/array")
+        @GET("/locations/mobile")
         Call<locationResponses> GetLocations();
     }
 
@@ -117,12 +117,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // Show rationale and request permission.
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_LOCATION_REQUEST_CODE);
         }
-        LatLng sydney = new LatLng(22.995571, 120.221539);
+        /*LatLng sydney = new LatLng(22.995571, 120.221539);
         mMap.addMarker(new MarkerOptions()
                 .position(sydney)
                 .title("Marker of my home")
                 .snippet("Welcome to tainan"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
         runnable = new Runnable() {
             @Override
             public void run() {

@@ -12,7 +12,22 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.Random;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+
 public class Graph extends AppCompatActivity {
+
+    public interface Service {
+        @FormUrlEncoded
+        @GET("/nitrates")
+        Call<NitrateResponses> GetData();
+    }
 
     private final Handler mHandler = new Handler();
     private Runnable runnable;
@@ -23,22 +38,39 @@ public class Graph extends AppCompatActivity {
             new DataPoint(3, 2),
             new DataPoint(4, 6)
     });
-    private BarGraphSeries<DataPoint> series2 = new BarGraphSeries<>(new DataPoint[]{
+    /*private BarGraphSeries<DataPoint> series2 = new BarGraphSeries<>(new DataPoint[]{
             new DataPoint(0, 1),
             new DataPoint(1, 5),
             new DataPoint(2, 3),
             new DataPoint(3, 2),
             new DataPoint(4, 6)
-    });
+    });*/
     private double graphLastXValue = 5d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
+        Retrofit retrofit = new Retrofit
+                .Builder()
+                .baseUrl("http://jia.ee.ncku.edu.tw")
+                .addConverterFactory(GsonConverterFactory.create()).build();
+        Graph.Service service = retrofit.create(Graph.Service.class);
+        Call<NitrateResponses> get = service.GetData();
+        get.enqueue(new Callback<NitrateResponses>() {
+            @Override
+            public void onResponse(Call<NitrateResponses> call, Response<NitrateResponses> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<NitrateResponses> call, Throwable t) {
+
+            }
+        });
         GraphView graph = (GraphView) findViewById(R.id.graph);
         graph.addSeries(series);
-        graph.addSeries(series2);
+        //graph.addSeries(series2);
         // activate horizontal zooming and scrolling
         graph.getViewport().setScalable(true);
         // activate horizontal scrolling
@@ -65,5 +97,6 @@ public class Graph extends AppCompatActivity {
         Random mRand = new Random();
         return mRand.nextDouble() * 50 - 0.25;
     }
+
 }
 

@@ -50,6 +50,17 @@ public class BoatFragment extends Fragment {
                 switch (position) {
                     case 1:
                         intent = new Intent(getActivity(), Graph.class);
+                        intent.putExtra("Activity_number", 1);
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        intent = new Intent(getActivity(), Graph.class);
+                        intent.putExtra("Activity_number", 2);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(getActivity(), Graph.class);
+                        intent.putExtra("Activity_number", 3);
                         startActivity(intent);
                         break;
                     case 4:
