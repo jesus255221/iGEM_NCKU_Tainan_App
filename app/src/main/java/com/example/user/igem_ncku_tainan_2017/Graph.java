@@ -7,13 +7,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.google.android.gms.maps.model.LatLng;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import retrofit2.Call;
@@ -21,8 +32,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 
 public class Graph extends AppCompatActivity {
@@ -48,13 +57,14 @@ public class Graph extends AppCompatActivity {
             new DataPoint(3, 2),
             new DataPoint(4, 6)
     });*/
-    private double graphLastXValue = 5d;
+    //private double graphLastXValue = 5d;
     private ArrayList<Double> longitude = new ArrayList<>();
     private ArrayList<Double> latitude = new ArrayList<>();
     private ArrayList<String> date = new ArrayList<>();
     private ArrayList<Double> ph = new ArrayList<>();
     private ArrayList<Double> temperature = new ArrayList<>();
     private ArrayList<Double> concentration = new ArrayList<>();
+    private ArrayList<Date> sensing_date = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +88,18 @@ public class Graph extends AppCompatActivity {
                     temperature.add(response.body().getNitrates().get(i).getTemp());
                     concentration.add(response.body().getNitrates().get(i).getConcentration());
                 }
-                //Toast.makeText(getApplicationContext(), response.body().getNitrates().get(0).getPh().toString(), Toast.LENGTH_SHORT).show();
+                final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                for (int i = 0; i < date.size(); i++) {
+                    try {
+                        String dateFormat = date.get(i).substring(0, 19);
+                        dateFormat = dateFormat.replace('T', ' ');
+                        Date date_1 = simpleDateFormat.parse(dateFormat);
+                        sensing_date.add(date_1);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
                 ArrayList<Double> DataSet = new ArrayList<>();
                 Intent intent = getIntent();
                 switch (intent.getIntExtra("Activity_number", -1)) {
@@ -92,22 +113,43 @@ public class Graph extends AppCompatActivity {
                         DataSet = concentration;
                         break;
                 }
-                DataPoint[] dataPoints = new DataPoint[DataSet.size()];
+                LineChart lineChart = (LineChart) findViewById(R.id.chart);
+                ArrayList<Entry> entries = new ArrayList<Entry>();
                 for (int i = 0; i < DataSet.size(); i++) {
-                    dataPoints[i] = new DataPoint(i, DataSet.get(i));
+                    entries.add(new Entry(i,DataSet.get(i).floatValue()));
                 }
+                LineDataSet dataSet = new LineDataSet(entries,null);
+                XAxis xAxis = lineChart.getXAxis();
+                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                xAxis.setDrawAxisLine(false);
+                xAxis.setAxisMinimum(1);
+                xAxis.setValueFormatter(new IAxisValueFormatter() {
+                    @Override
+                    public String getFormattedValue(float value, AxisBase axis) {
+                        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("MM/dd HH:mm");
+                        return simpleDateFormat1.format(sensing_date.get((int) value));
+                    }
+                });
+                LineData data = new LineData(dataSet);
+                lineChart.setData(data);
+
+                /*DataPoint[] dataPoints = new DataPoint[DataSet.size()];
+                for (int i = 0; i < DataSet.size(); i++) {
+                    dataPoints[i] = new DataPoint(sensing_date.get(i), DataSet.get(i));
+                }
+                Toast.makeText(getApplicationContext(),Double.toString(DataSet.get(0)),Toast.LENGTH_LONG).show();
                 LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoints);
                 GraphView graph = (GraphView) findViewById(R.id.graph);
+                SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("\nMM-dd\nHH:mm:ss");
                 graph.getViewport().setYAxisBoundsManual(true);
                 graph.getViewport().setMinY(0);
-                graph.getViewport().setMaxY(14);
+                graph.getViewport().setScalableY(true);
                 graph.getViewport().setXAxisBoundsManual(true);
-                graph.getViewport().setMinX(0);
-                graph.getViewport().setMaxX(10);
-                //graph.getViewport().setScalableY(true);
                 graph.getViewport().setScalable(true);
                 graph.getViewport().setScrollable(true);
                 graph.addSeries(series);
+                graph.getGridLabelRenderer().setNumHorizontalLabels(3);
+                graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getApplicationContext(),simpleDateFormat1));*/
             }
 
             @Override
@@ -139,10 +181,10 @@ public class Graph extends AppCompatActivity {
         mHandler.postDelayed(runnable, 1000);*/
     }
 
-    private double getRandom() {
+    /*private double getRandom() {
         Random mRand = new Random();
         return mRand.nextDouble() * 50 - 0.25;
-    }
+    }*/
 
 }
 
