@@ -30,18 +30,20 @@ public class BoatFragment extends Fragment {
         // Inflate the layout for this fragment
         recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_boat, container, false);
-        String[] titles = new String[5];
+        String[] titles = new String[6];
         titles[0] = "Linkit";
         titles[1] = "PH meter";
         titles[2] = "temp";
-        titles[3] = "NO2";
+        titles[3] = "Nitrate concentration";
         titles[4] = "GPS Data";
-        int[] icons = new int[5];
+        titles[5] = "Nitrate Map";
+        int[] icons = new int[6];
         icons[0] = R.drawable.linkit_two;
         icons[1] = R.drawable.ph_meter;
         icons[2] = R.drawable.thermometer;
         icons[3] = R.drawable.bubbles;
         icons[4] = R.drawable.worldwide;
+        icons[5] = R.drawable.ic_pin_drop_black_24dp;
         MyAdapter adapter = new MyAdapter(titles, icons);
         adapter.setListener(new MyAdapter.Listener() {
             @Override
@@ -65,6 +67,12 @@ public class BoatFragment extends Fragment {
                         break;
                     case 4:
                         intent = new Intent(getActivity(), MapsActivity.class);
+                        intent.putExtra("Activity_number", 4);
+                        startActivity(intent);
+                        break;
+                    case 5:
+                        intent = new Intent(getActivity(), MapsActivity.class);
+                        intent.putExtra("Activity_number", 5);
                         startActivity(intent);
                         break;
                 }

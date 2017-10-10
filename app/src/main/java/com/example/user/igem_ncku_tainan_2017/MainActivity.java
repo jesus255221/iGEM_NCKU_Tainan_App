@@ -87,17 +87,9 @@ public class MainActivity extends AppCompatActivity {
             String date = simpleDateFormat.format(calendar.getTime());
             editor.putString("DATE", date);
             editor.commit();
-            Toast.makeText(this, "Not exist", Toast.LENGTH_SHORT).show();
         }
         Intent intent = new Intent(this, NotificationService.class);
         startService(intent);
-        if (sharedPreferences.getString("DATE", null) != null) {
-            //Toast.makeText(this, sharedPreferences.getString("DATE", null), Toast.LENGTH_SHORT).show();
-        }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_MONTH, -30);
-        //Toast.makeText(this, simpleDateFormat.format(calendar.getTime()), Toast.LENGTH_SHORT).show();
     }
 
     @Override

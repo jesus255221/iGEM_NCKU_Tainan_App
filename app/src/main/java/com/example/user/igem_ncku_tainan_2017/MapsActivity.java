@@ -2,6 +2,7 @@ package com.example.user.igem_ncku_tainan_2017;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.user.igem_ncku_tainan_2017.R;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -65,6 +67,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         @GET("/locations/mobile")
         Call<locationResponses> GetLocations();
+
+        @GET("/nitrates/mobile")
+        Call<NitrateResponses> GetData();
     }
 
 
@@ -107,7 +112,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Toast.makeText(getApplicationContext(), "Ready", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "Ready", Toast.LENGTH_SHORT).show();
         mMap = googleMap;
         // Add a marker in Sydney and move the camera
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -132,33 +137,61 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             .baseUrl("http://jia.ee.ncku.edu.tw")
                             .addConverterFactory(GsonConverterFactory.create()).build();
                     MapsActivity.Service service = retrofit.create(MapsActivity.Service.class);
-                    Call<locationResponses> get = service.GetLocations();
-                    get.enqueue(new Callback<locationResponses>() {
-                        @Override
-                        public void onResponse(Call<locationResponses> call, Response<locationResponses> response) {
-                            for (int i = 0; i < response.body().getLocations().size(); i++) {
-                                latituude.add(i, response.body().getLocations().get(i).getLatitude() / 100);
-                                longitude.add(i, response.body().getLocations().get(i).getLongitude() / 100);
-                                latLngs.add(i, new LatLng(latituude.get(i), longitude.get(i)));
-                                date.add(response.body().getLocations().get(i).getDate());
-                                mMap.addMarker(new MarkerOptions()
-                                        .position(new LatLng(latituude.get(i), longitude.get(i)))
-                                        .title(date.get(i))
-                                );
+                    Intent intent = getIntent();
+                    if (intent.getIntExtra("Activity_number", -1) == 4) {
+                        Call<locationResponses> get = service.GetLocations();
+                        get.enqueue(new Callback<locationResponses>() {
+                            @Override
+                            public void onResponse(Call<locationResponses> call, Response<locationResponses> response) {
+                                for (int i = 0; i < response.body().getLocations().size(); i++) {
+                                    latituude.add(i, response.body().getLocations().get(i).getLatitude() / 100);
+                                    longitude.add(i, response.body().getLocations().get(i).getLongitude() / 100);
+                                    latLngs.add(i, new LatLng(latituude.get(i), longitude.get(i)));
+                                    date.add(response.body().getLocations().get(i).getDate());
+                                    mMap.addMarker(new MarkerOptions()
+                                            .position(new LatLng(latituude.get(i), longitude.get(i)))
+                                            .title(date.get(i))
+                                    );
+                                }
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(latituude.get(0),longitude.get(0)),18));
                             }
-                        }
 
-                        @Override
-                        public void onFailure(Call<locationResponses> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
-                        }
-                    });
-                    PolylineOptions rectOptions = new PolylineOptions();
-                    rectOptions.addAll(latLngs);
-                    mMap.addPolyline(rectOptions);
-                    latituude.clear();
-                    longitude.clear();
-                    latLngs.clear();
+                            @Override
+                            public void onFailure(Call<locationResponses> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        PolylineOptions rectOptions = new PolylineOptions();
+                        rectOptions.addAll(latLngs);
+                        mMap.addPolyline(rectOptions);
+                        latituude.clear();
+                        longitude.clear();
+                        latLngs.clear();
+                    } else {
+                        Call<NitrateResponses> get = service.GetData();
+                        get.enqueue(new Callback<NitrateResponses>() {
+                            @Override
+                            public void onResponse(Call<NitrateResponses> call, Response<NitrateResponses> response) {
+                                //Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                                for (int i = 0; i < response.body().getNitrates().size(); i++) {
+                                    mMap.addMarker(new MarkerOptions()
+                                            .position(new LatLng(response.body().getNitrates().get(i).getLatitude(),
+                                                    response.body().getNitrates().get(i).getLongitude()))
+                                            .title(response.body().getNitrates().get(i).getDate())
+                                            .snippet(Double.toString(response.body().getNitrates().get(i).getConcentration()) + " ppm"));
+                                }
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(response.body().getNitrates().get(0).getLatitude(),
+                                                response.body().getNitrates().get(0).getLongitude()),18));
+                            }
+
+                            @Override
+                            public void onFailure(Call<NitrateResponses> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
                 } else {
                     Toast.makeText(getApplicationContext(), "NetWorkERROR", Toast.LENGTH_SHORT).show();
                 }

@@ -65,6 +65,7 @@ public class Graph extends AppCompatActivity {
     private ArrayList<Double> temperature = new ArrayList<>();
     private ArrayList<Double> concentration = new ArrayList<>();
     private ArrayList<Date> sensing_date = new ArrayList<>();
+    private String dataSetName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,20 +106,25 @@ public class Graph extends AppCompatActivity {
                 switch (intent.getIntExtra("Activity_number", -1)) {
                     case 1:
                         DataSet = ph;
+                        dataSetName = "PH Value";
                         break;
                     case 2:
                         DataSet = temperature;
+                        dataSetName = "water temperature(celsius)";
                         break;
                     case 3:
                         DataSet = concentration;
+                        dataSetName = "nitrate concentration(ppm)";
                         break;
                 }
                 LineChart lineChart = (LineChart) findViewById(R.id.chart);
-                ArrayList<Entry> entries = new ArrayList<Entry>();
+                ArrayList<Entry> entries = new ArrayList<>();
                 for (int i = 0; i < DataSet.size(); i++) {
-                    entries.add(new Entry(i,DataSet.get(i).floatValue()));
+                    entries.add(new Entry(i, DataSet.get(i).floatValue()));
                 }
-                LineDataSet dataSet = new LineDataSet(entries,null);
+                LineDataSet dataSet = new LineDataSet(entries, dataSetName);
+                dataSet.setValueTextSize(12f);
+                //dataSet.setColor();
                 XAxis xAxis = lineChart.getXAxis();
                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
                 xAxis.setDrawAxisLine(false);
@@ -126,13 +132,12 @@ public class Graph extends AppCompatActivity {
                 xAxis.setValueFormatter(new IAxisValueFormatter() {
                     @Override
                     public String getFormattedValue(float value, AxisBase axis) {
-                        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("MM/dd HH:mm");
+                        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("M/d H:m");
                         return simpleDateFormat1.format(sensing_date.get((int) value));
                     }
                 });
                 LineData data = new LineData(dataSet);
                 lineChart.setData(data);
-
                 /*DataPoint[] dataPoints = new DataPoint[DataSet.size()];
                 for (int i = 0; i < DataSet.size(); i++) {
                     dataPoints[i] = new DataPoint(sensing_date.get(i), DataSet.get(i));
