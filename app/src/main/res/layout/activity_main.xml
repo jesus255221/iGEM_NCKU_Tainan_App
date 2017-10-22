@@ -17,7 +17,7 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#ffaaff"
+        android:background="#42B9C5"
         android:choiceMode="singleChoice"
         android:divider="@android:color/background_light"
         android:dividerHeight="0dp"></ListView>

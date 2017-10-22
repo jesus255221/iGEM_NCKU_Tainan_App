@@ -12,8 +12,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="You need to change the material of regulator per day!"
-            android:textColor="#FF0000"
+            android:text="You will have to change the material of regulator every day!"
+            android:textColor="#19B3B6"
             android:textSize="40dp"
             android:gravity="center"
             />

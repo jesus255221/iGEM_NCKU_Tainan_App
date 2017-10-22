@@ -20,7 +20,7 @@ public class NotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        /*SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("DATE", null) != null) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
             Calendar calender = Calendar.getInstance();
@@ -30,7 +30,8 @@ public class NotificationService extends IntentService {
             if (date_1.equals(date_2)) {
                 showText();
             }
-        }
+        }*/
+        showText();
     }
 
 

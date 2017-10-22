@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -24,6 +25,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Random;
 
@@ -101,6 +103,19 @@ public class Graph extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
+                for (int i = 0; i < sensing_date.size(); i++) {
+                    for (int j = i + 1; j < sensing_date.size(); j++) {
+                        if (sensing_date.get(i).after(sensing_date.get(j))) {
+                            Collections.swap(longitude,i,j);
+                            Collections.swap(latitude,i,j);
+                            Collections.swap(date,i,j);
+                            Collections.swap(ph,i,j);
+                            Collections.swap(temperature,i,j);
+                            Collections.swap(concentration,i,j);
+                            Collections.swap(sensing_date,i,j);
+                        }
+                    }
+                }
                 ArrayList<Double> DataSet = new ArrayList<>();
                 Intent intent = getIntent();
                 switch (intent.getIntExtra("Activity_number", -1)) {
@@ -123,16 +138,16 @@ public class Graph extends AppCompatActivity {
                     entries.add(new Entry(i, DataSet.get(i).floatValue()));
                 }
                 LineDataSet dataSet = new LineDataSet(entries, dataSetName);
-                dataSet.setValueTextSize(12f);
-                //dataSet.setColor();
+                dataSet.setLineWidth(5f);
+                dataSet.setValueTextSize(18f);
                 XAxis xAxis = lineChart.getXAxis();
                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
                 xAxis.setDrawAxisLine(false);
-                xAxis.setAxisMinimum(1);
+                xAxis.setGranularity(1f);
                 xAxis.setValueFormatter(new IAxisValueFormatter() {
                     @Override
                     public String getFormattedValue(float value, AxisBase axis) {
-                        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("M/d H:m");
+                        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("M/d H:mm");
                         return simpleDateFormat1.format(sensing_date.get((int) value));
                     }
                 });

@@ -128,9 +128,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .title("Marker of my home")
                 .snippet("Welcome to tainan"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
-        runnable = new Runnable() {
+        /*runnable = new Runnable() {
             @Override
-            public void run() {
+            public void run() {*/
                 if (isNetworkConnected()) {
                     Retrofit retrofit = new Retrofit
                             .Builder()
@@ -152,6 +152,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                             .position(new LatLng(latituude.get(i), longitude.get(i)))
                                             .title(date.get(i))
                                     );
+                                    PolylineOptions rectOptions = new PolylineOptions();
+                                    rectOptions.addAll(latLngs);
+                                    mMap.addPolyline(rectOptions);
                                 }
                                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                         new LatLng(latituude.get(0),longitude.get(0)),18));
@@ -162,9 +165,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 Toast.makeText(getApplicationContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
                             }
                         });
-                        PolylineOptions rectOptions = new PolylineOptions();
-                        rectOptions.addAll(latLngs);
-                        mMap.addPolyline(rectOptions);
                         latituude.clear();
                         longitude.clear();
                         latLngs.clear();
@@ -195,10 +195,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 } else {
                     Toast.makeText(getApplicationContext(), "NetWorkERROR", Toast.LENGTH_SHORT).show();
                 }
-                handler.postDelayed(this, 10000);
+                /*handler.postDelayed(this, 10000);
             }
         };
-        handler.post(runnable);
+        handler.post(runnable);*/
     }
 
     @Override

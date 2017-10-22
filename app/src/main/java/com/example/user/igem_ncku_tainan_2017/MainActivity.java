@@ -1,8 +1,10 @@
 package com.example.user.igem_ncku_tainan_2017;
 
+import android.app.AlarmManager;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), drawerTitles[currentPosition], Toast.LENGTH_LONG).show();
             }
         });
-        SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        /*SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("DATE", null) == null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             Calendar calendar = Calendar.getInstance();
@@ -87,9 +89,19 @@ public class MainActivity extends AppCompatActivity {
             String date = simpleDateFormat.format(calendar.getTime());
             editor.putString("DATE", date);
             editor.commit();
-        }
-        Intent intent = new Intent(this, NotificationService.class);
-        startService(intent);
+        }*/
+        Intent intent = new Intent(this,NotificationService.class);
+        PendingIntent pendingIntent = PendingIntent.getService(this,0,intent,0);
+        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        /* Set the alarm to start at 10:30 AM */
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 10);
+
+        /* Repeating on every 20 minutes interval */
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
     @Override

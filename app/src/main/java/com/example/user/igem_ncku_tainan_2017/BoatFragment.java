@@ -30,47 +30,45 @@ public class BoatFragment extends Fragment {
         // Inflate the layout for this fragment
         recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_boat, container, false);
-        String[] titles = new String[6];
-        titles[0] = "Linkit";
-        titles[1] = "PH meter";
-        titles[2] = "temp";
-        titles[3] = "Nitrate concentration";
-        titles[4] = "GPS Data";
-        titles[5] = "Nitrate Map";
-        int[] icons = new int[6];
-        icons[0] = R.drawable.linkit_two;
-        icons[1] = R.drawable.ph_meter;
-        icons[2] = R.drawable.thermometer;
-        icons[3] = R.drawable.bubbles;
-        icons[4] = R.drawable.worldwide;
-        icons[5] = R.drawable.ic_pin_drop_black_24dp;
+        String[] titles = new String[5];
+        titles[0] = "PH meter";
+        titles[1] = "temp";
+        titles[2] = "Nitrate concentration";
+        titles[3] = "GPS Data";
+        titles[4] = "Nitrate Map";
+        int[] icons = new int[5];
+        icons[0] = R.drawable.ph_meter;
+        icons[1] = R.drawable.thermometer;
+        icons[2] = R.drawable.bubbles;
+        icons[3] = R.drawable.worldwide;
+        icons[4] = R.drawable.ic_pin_drop_black_24dp;
         MyAdapter adapter = new MyAdapter(titles, icons);
         adapter.setListener(new MyAdapter.Listener() {
             @Override
             public void onClick(int position) {
                 Intent intent;
                 switch (position) {
-                    case 1:
+                    case 0:
                         intent = new Intent(getActivity(), Graph.class);
                         intent.putExtra("Activity_number", 1);
                         startActivity(intent);
                         break;
-                    case 2:
+                    case 1:
                         intent = new Intent(getActivity(), Graph.class);
                         intent.putExtra("Activity_number", 2);
                         startActivity(intent);
                         break;
-                    case 3:
+                    case 2:
                         intent = new Intent(getActivity(), Graph.class);
                         intent.putExtra("Activity_number", 3);
                         startActivity(intent);
                         break;
-                    case 4:
+                    case 3:
                         intent = new Intent(getActivity(), MapsActivity.class);
                         intent.putExtra("Activity_number", 4);
                         startActivity(intent);
                         break;
-                    case 5:
+                    case 4:
                         intent = new Intent(getActivity(), MapsActivity.class);
                         intent.putExtra("Activity_number", 5);
                         startActivity(intent);
