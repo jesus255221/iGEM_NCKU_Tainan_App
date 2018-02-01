@@ -31,17 +31,17 @@ public class BoatFragment extends Fragment {
         recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_boat, container, false);
         String[] titles = new String[5];
-        titles[0] = "PH meter";
-        titles[1] = "temp";
+        titles[0] = "PH value";
+        titles[1] = "Temperature";
         titles[2] = "Nitrate concentration";
         titles[3] = "GPS Data";
         titles[4] = "Nitrate Map";
         int[] icons = new int[5];
-        icons[0] = R.drawable.ph_meter;
-        icons[1] = R.drawable.thermometer;
-        icons[2] = R.drawable.bubbles;
-        icons[3] = R.drawable.worldwide;
-        icons[4] = R.drawable.ic_pin_drop_black_24dp;
+        icons[0] = R.mipmap.line_chart;
+        icons[1] = R.mipmap.line_chart;
+        icons[2] = R.mipmap.nitrate;
+        icons[3] = R.mipmap.cursor;
+        icons[4] = R.mipmap.cursor;
         MyAdapter adapter = new MyAdapter(titles, icons);
         adapter.setListener(new MyAdapter.Listener() {
             @Override

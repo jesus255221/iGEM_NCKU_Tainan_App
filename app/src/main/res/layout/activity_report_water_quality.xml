@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    tools:context="com.example.user.igem_ncku_tainan_2017.ReportWaterQuality">
+    <TextView
+        android:id="@+id/environment_Incident"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="環境事件"
+        android:textSize="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Spinner
+        android:id="@+id/environment_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/environment_Incident"
+        android:entries="@array/environment_incidents"
+        />
+    <TextView
+        android:id="@+id/biological_Incident"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="生物事件"
+        android:textSize="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/environment_spinner" />
+    <Spinner
+        android:id="@+id/biological_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/biological_Incident"
+        android:entries="@array/biological_incidents"
+        />
+    <TextView
+        android:id="@+id/human_Incident"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="請以1~10評斷人潮擁擠程度"
+        android:textSize="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/biological_spinner" />
+    <Spinner
+        android:id="@+id/human_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/human_Incident"
+        android:entries="@array/numbers_for_rating"
+        />
+    <Button
+        android:id="@+id/sendreport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="send"
+        app:layout_constraintTop_toBottomOf="@id/human_spinner"
+        app:layout_constraintRight_toLeftOf="parent"
+        />
+
+</android.support.constraint.ConstraintLayout>

@@ -13,4 +13,29 @@
     <string name="open_drawer">Open drawer</string>
     <string name="close_drawer">Close drawer</string>
     <string name="title_activity_maps">Map</string>
+
+    <string-array name="environment_incidents">
+        <item>水面油汙</item>
+        <item>臭味</item>
+        <item>水面結冰</item>
+        <item>水溫</item>
+        <item>冰層厚度</item>
+    </string-array>
+    <string-array name="biological_incidents">
+        <item>藻華</item>
+        <item>魚群暴斃</item>
+        <item>外來物種入侵</item>
+    </string-array>
+    <string-array name="numbers_for_rating">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 </resources>

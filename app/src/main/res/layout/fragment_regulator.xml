@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:text="You will have to change the material of regulator every day!"
             android:textColor="#19B3B6"
-            android:textSize="40dp"
+            android:textSize="20dp"
             android:gravity="center"
             />
 
