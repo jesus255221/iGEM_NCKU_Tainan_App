@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("DATE", date);
             editor.commit();
         }*/
-        Intent intent = new Intent(this,NotificationService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(this,0,intent,0);
+        Intent intent = new Intent(this, NotificationService.class);
+        PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         /* Set the alarm to start at 10:30 AM */

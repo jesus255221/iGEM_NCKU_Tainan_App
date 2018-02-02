@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
                         startActivity(new Intent(getActivity(), ReportWaterQuality.class));
                         break;
                     //default:
-                        //fragment = new HomeFragment();
+                    //fragment = new HomeFragment();
                 }
                 if (!(fragment instanceof HomeFragment)) {
                     //Fragment trade

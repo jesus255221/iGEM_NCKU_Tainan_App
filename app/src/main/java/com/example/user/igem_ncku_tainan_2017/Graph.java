@@ -22,6 +22,7 @@ import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -82,77 +83,77 @@ public class Graph extends AppCompatActivity {
         get.enqueue(new Callback<NitrateResponses>() {
             @Override
             public void onResponse(Call<NitrateResponses> call, Response<NitrateResponses> response) {
-
-                for (int i = 0; i < response.body().getNitrates().size(); i++) {
-                    date.add(response.body().getNitrates().get(i).getDate());
-                    longitude.add(response.body().getNitrates().get(i).getLongitude());
-                    latitude.add(response.body().getNitrates().get(i).getLatitude());
-                    ph.add(response.body().getNitrates().get(i).getPh());
-                    temperature.add(response.body().getNitrates().get(i).getTemp());
-                    concentration.add(response.body().getNitrates().get(i).getConcentration());
-                }
-                final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                for (int i = 0; i < date.size(); i++) {
-                    try {
-                        String dateFormat = date.get(i).substring(0, 19);
-                        dateFormat = dateFormat.replace('T', ' ');
-                        Date date_1 = simpleDateFormat.parse(dateFormat);
-                        sensing_date.add(date_1);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                        Toast.makeText(getApplicationContext(), e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                try {
+                    for (int i = 0; i < response.body().getNitrates().size(); i++) {
+                        date.add(response.body().getNitrates().get(i).getDate());
+                        longitude.add(response.body().getNitrates().get(i).getLongitude());
+                        latitude.add(response.body().getNitrates().get(i).getLatitude());
+                        ph.add(response.body().getNitrates().get(i).getPh());
+                        temperature.add(response.body().getNitrates().get(i).getTemp());
+                        concentration.add(response.body().getNitrates().get(i).getConcentration());
                     }
-                }
-                for (int i = 0; i < sensing_date.size(); i++) {
-                    for (int j = i + 1; j < sensing_date.size(); j++) {
-                        if (sensing_date.get(i).after(sensing_date.get(j))) {
-                            Collections.swap(longitude,i,j);
-                            Collections.swap(latitude,i,j);
-                            Collections.swap(date,i,j);
-                            Collections.swap(ph,i,j);
-                            Collections.swap(temperature,i,j);
-                            Collections.swap(concentration,i,j);
-                            Collections.swap(sensing_date,i,j);
+                    final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    for (int i = 0; i < date.size(); i++) {
+                        try {
+                            String dateFormat = date.get(i).substring(0, 19);
+                            dateFormat = dateFormat.replace('T', ' ');
+                            Date date_1 = simpleDateFormat.parse(dateFormat);
+                            sensing_date.add(date_1);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
-                }
-                ArrayList<Double> DataSet = new ArrayList<>();
-                Intent intent = getIntent();
-                switch (intent.getIntExtra("Activity_number", -1)) {
-                    case 1:
-                        DataSet = ph;
-                        dataSetName = "PH Value";
-                        break;
-                    case 2:
-                        DataSet = temperature;
-                        dataSetName = "water temperature(celsius)";
-                        break;
-                    case 3:
-                        DataSet = concentration;
-                        dataSetName = "nitrate concentration(ppm)";
-                        break;
-                }
-                LineChart lineChart = (LineChart) findViewById(R.id.chart);
-                ArrayList<Entry> entries = new ArrayList<>();
-                for (int i = 0; i < DataSet.size(); i++) {
-                    entries.add(new Entry(i, DataSet.get(i).floatValue()));
-                }
-                LineDataSet dataSet = new LineDataSet(entries, dataSetName);
-                dataSet.setLineWidth(5f);
-                dataSet.setValueTextSize(18f);
-                XAxis xAxis = lineChart.getXAxis();
-                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-                xAxis.setDrawAxisLine(false);
-                xAxis.setGranularity(1f);
-                xAxis.setValueFormatter(new IAxisValueFormatter() {
-                    @Override
-                    public String getFormattedValue(float value, AxisBase axis) {
-                        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("M/d H:mm");
-                        return simpleDateFormat1.format(sensing_date.get((int) value));
+                    for (int i = 0; i < sensing_date.size(); i++) {
+                        for (int j = i + 1; j < sensing_date.size(); j++) {
+                            if (sensing_date.get(i).after(sensing_date.get(j))) {
+                                Collections.swap(longitude, i, j);
+                                Collections.swap(latitude, i, j);
+                                Collections.swap(date, i, j);
+                                Collections.swap(ph, i, j);
+                                Collections.swap(temperature, i, j);
+                                Collections.swap(concentration, i, j);
+                                Collections.swap(sensing_date, i, j);
+                            }
+                        }
                     }
-                });
-                LineData data = new LineData(dataSet);
-                lineChart.setData(data);
+                    ArrayList<Double> DataSet = new ArrayList<>();
+                    Intent intent = getIntent();
+                    switch (intent.getIntExtra("Activity_number", -1)) {
+                        case 1:
+                            DataSet = ph;
+                            dataSetName = "PH Value";
+                            break;
+                        case 2:
+                            DataSet = temperature;
+                            dataSetName = "water temperature(celsius)";
+                            break;
+                        case 3:
+                            DataSet = concentration;
+                            dataSetName = "nitrate concentration(ppm)";
+                            break;
+                    }
+                    LineChart lineChart = (LineChart) findViewById(R.id.chart);
+                    ArrayList<Entry> entries = new ArrayList<>();
+                    for (int i = 0; i < DataSet.size(); i++) {
+                        entries.add(new Entry(i, DataSet.get(i).floatValue()));
+                    }
+                    LineDataSet dataSet = new LineDataSet(entries, dataSetName);
+                    dataSet.setLineWidth(5f);
+                    dataSet.setValueTextSize(18f);
+                    XAxis xAxis = lineChart.getXAxis();
+                    xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                    xAxis.setDrawAxisLine(false);
+                    xAxis.setGranularity(1f);
+                    xAxis.setValueFormatter(new IAxisValueFormatter() {
+                        @Override
+                        public String getFormattedValue(float value, AxisBase axis) {
+                            SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("M/d H:mm");
+                            return simpleDateFormat1.format(sensing_date.get((int) value));
+                        }
+                    });
+                    LineData data = new LineData(dataSet);
+                    lineChart.setData(data);
                 /*DataPoint[] dataPoints = new DataPoint[DataSet.size()];
                 for (int i = 0; i < DataSet.size(); i++) {
                     dataPoints[i] = new DataPoint(sensing_date.get(i), DataSet.get(i));
@@ -170,6 +171,9 @@ public class Graph extends AppCompatActivity {
                 graph.addSeries(series);
                 graph.getGridLabelRenderer().setNumHorizontalLabels(3);
                 graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getApplicationContext(),simpleDateFormat1));*/
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Oops! something went wrong!", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override

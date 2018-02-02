@@ -131,70 +131,74 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         /*runnable = new Runnable() {
             @Override
             public void run() {*/
-                if (isNetworkConnected()) {
-                    Retrofit retrofit = new Retrofit
-                            .Builder()
-                            .baseUrl("http://jia.ee.ncku.edu.tw")
-                            .addConverterFactory(GsonConverterFactory.create()).build();
-                    MapsActivity.Service service = retrofit.create(MapsActivity.Service.class);
-                    Intent intent = getIntent();
-                    if (intent.getIntExtra("Activity_number", -1) == 4) {
-                        Call<locationResponses> get = service.GetLocations();
-                        get.enqueue(new Callback<locationResponses>() {
-                            @Override
-                            public void onResponse(Call<locationResponses> call, Response<locationResponses> response) {
-                                for (int i = 0; i < response.body().getLocations().size(); i++) {
-                                    latituude.add(i, response.body().getLocations().get(i).getLatitude() / 100);
-                                    longitude.add(i, response.body().getLocations().get(i).getLongitude() / 100);
-                                    latLngs.add(i, new LatLng(latituude.get(i), longitude.get(i)));
-                                    date.add(response.body().getLocations().get(i).getDate());
-                                    mMap.addMarker(new MarkerOptions()
-                                            .position(new LatLng(latituude.get(i), longitude.get(i)))
-                                            .title(date.get(i))
-                                    );
-                                    PolylineOptions rectOptions = new PolylineOptions();
-                                    rectOptions.addAll(latLngs);
-                                    mMap.addPolyline(rectOptions);
-                                }
-                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(latituude.get(0),longitude.get(0)),18));
+        if (isNetworkConnected()) {
+            Retrofit retrofit = new Retrofit
+                    .Builder()
+                    .baseUrl("http://jia.ee.ncku.edu.tw")
+                    .addConverterFactory(GsonConverterFactory.create()).build();
+            MapsActivity.Service service = retrofit.create(MapsActivity.Service.class);
+            Intent intent = getIntent();
+            if (intent.getIntExtra("Activity_number", -1) == 4) {
+                Call<locationResponses> get = service.GetLocations();
+                get.enqueue(new Callback<locationResponses>() {
+                    @Override
+                    public void onResponse(Call<locationResponses> call, Response<locationResponses> response) {
+                        try {
+                            for (int i = 0; i < response.body().getLocations().size(); i++) {
+                                latituude.add(i, response.body().getLocations().get(i).getLatitude() / 100);
+                                longitude.add(i, response.body().getLocations().get(i).getLongitude() / 100);
+                                latLngs.add(i, new LatLng(latituude.get(i), longitude.get(i)));
+                                date.add(response.body().getLocations().get(i).getDate());
+                                mMap.addMarker(new MarkerOptions()
+                                        .position(new LatLng(latituude.get(i), longitude.get(i)))
+                                        .title(date.get(i))
+                                );
+                                PolylineOptions rectOptions = new PolylineOptions();
+                                rectOptions.addAll(latLngs);
+                                mMap.addPolyline(rectOptions);
                             }
-
-                            @Override
-                            public void onFailure(Call<locationResponses> call, Throwable t) {
-                                Toast.makeText(getApplicationContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        latituude.clear();
-                        longitude.clear();
-                        latLngs.clear();
-                    } else {
-                        Call<NitrateResponses> get = service.GetData();
-                        get.enqueue(new Callback<NitrateResponses>() {
-                            @Override
-                            public void onResponse(Call<NitrateResponses> call, Response<NitrateResponses> response) {
-                                //Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-                                for (int i = 0; i < response.body().getNitrates().size(); i++) {
-                                    mMap.addMarker(new MarkerOptions()
-                                            .position(new LatLng(response.body().getNitrates().get(i).getLatitude(),
-                                                    response.body().getNitrates().get(i).getLongitude()))
-                                            .title(response.body().getNitrates().get(i).getDate())
-                                            .snippet(Double.toString(response.body().getNitrates().get(i).getConcentration()) + " ppm"));
-                                }
-                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(response.body().getNitrates().get(0).getLatitude(),
-                                                response.body().getNitrates().get(0).getLongitude()),18));
-                            }
-
-                            @Override
-                            public void onFailure(Call<NitrateResponses> call, Throwable t) {
-                                Toast.makeText(getApplicationContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
-                            }
-                        });
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                    new LatLng(latituude.get(0), longitude.get(0)), 18));
+                        } catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), "Oops! Something went wrong!", Toast.LENGTH_LONG).show();
+                        }
                     }
-                } else {
-                    Toast.makeText(getApplicationContext(), "NetWorkERROR", Toast.LENGTH_SHORT).show();
-                }
+
+                    @Override
+                    public void onFailure(Call<locationResponses> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+                latituude.clear();
+                longitude.clear();
+                latLngs.clear();
+            } else {
+                Call<NitrateResponses> get = service.GetData();
+                get.enqueue(new Callback<NitrateResponses>() {
+                    @Override
+                    public void onResponse(Call<NitrateResponses> call, Response<NitrateResponses> response) {
+                        //Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                        for (int i = 0; i < response.body().getNitrates().size(); i++) {
+                            mMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(response.body().getNitrates().get(i).getLatitude(),
+                                            response.body().getNitrates().get(i).getLongitude()))
+                                    .title(response.body().getNitrates().get(i).getDate())
+                                    .snippet(Double.toString(response.body().getNitrates().get(i).getConcentration()) + " ppm"));
+                        }
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                new LatLng(response.body().getNitrates().get(0).getLatitude(),
+                                        response.body().getNitrates().get(0).getLongitude()), 18));
+                    }
+
+                    @Override
+                    public void onFailure(Call<NitrateResponses> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "NetWorkERROR", Toast.LENGTH_SHORT).show();
+        }
                 /*handler.postDelayed(this, 10000);
             }
         };

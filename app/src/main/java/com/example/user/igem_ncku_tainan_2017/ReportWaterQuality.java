@@ -16,7 +16,7 @@ public class ReportWaterQuality extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Thank you for sharing this information with us.",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Thank you for sharing this information with us.", Toast.LENGTH_LONG).show();
             }
         });
     }
