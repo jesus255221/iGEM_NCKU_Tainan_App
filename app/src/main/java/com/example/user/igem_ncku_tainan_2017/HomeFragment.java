@@ -31,11 +31,11 @@ public class HomeFragment extends Fragment {
         recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_home, container, false);
         String[] cardview_titles = new String[5];
-        cardview_titles[0] = "Regulator";
-        cardview_titles[1] = "Boat";
-        cardview_titles[2] = "Official WebSite";
-        cardview_titles[3] = "Report water quality";
-        cardview_titles[4] = "forum";
+        cardview_titles[0] = "調控槽";
+        cardview_titles[1] = "偵測船";
+        cardview_titles[2] = "官網";
+        cardview_titles[3] = "水質回報";
+        cardview_titles[4] = "論壇";
         int[] icon = new int[5];
         icon[0] = R.drawable.device;
         icon[1] = R.drawable.boat;
@@ -65,6 +65,9 @@ public class HomeFragment extends Fragment {
                         break;
                     case 3:
                         startActivity(new Intent(getActivity(), ReportWaterQuality.class));
+                        break;
+                    case 4:
+                        startActivity(new Intent(getActivity(), Forum.class));
                         break;
                     //default:
                     //fragment = new HomeFragment();

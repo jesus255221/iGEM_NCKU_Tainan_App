@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iGEM ncku tainan 2017</string>
+    <string name="app_name">NCKU-Tainan 水質監測系統</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

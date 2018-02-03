@@ -44,7 +44,8 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".WebView_Activity" />
         <activity android:name=".Graph" />
-        <activity android:name=".ReportWaterQuality"></activity>
+        <activity android:name=".ReportWaterQuality" />
+        <activity android:name=".Forum"></activity>
     </application>
 
 </manifest>

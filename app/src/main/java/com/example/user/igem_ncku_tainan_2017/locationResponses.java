@@ -10,7 +10,7 @@ public class locationResponses {
     @Expose
     private List<Locations> locations;
 
-    public List<Locations> getLocations(){
+    public List<Locations> getLocations() {
         return locations;
     }
 }
