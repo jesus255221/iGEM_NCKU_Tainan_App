@@ -30,16 +30,19 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_home, container, false);
-        String[] cardview_titles = new String[4];
+        String[] cardview_titles = new String[5];
         cardview_titles[0] = "Regulator";
         cardview_titles[1] = "Boat";
         cardview_titles[2] = "Official WebSite";
         cardview_titles[3] = "Report water quality";
-        int[] icon = new int[4];
+        cardview_titles[4] = "forum";
+        int[] icon = new int[5];
         icon[0] = R.drawable.device;
         icon[1] = R.drawable.boat;
         icon[2] = R.drawable.ic_web_black_24dp;
         icon[3] = R.drawable.ic_reply_all_black_24dp;
+        icon[4] = R.drawable.ic_featured_play_list_black_24dp;
+
 
         MyAdapter adapter = new MyAdapter(cardview_titles, icon);
         recyclerView.setAdapter(adapter);

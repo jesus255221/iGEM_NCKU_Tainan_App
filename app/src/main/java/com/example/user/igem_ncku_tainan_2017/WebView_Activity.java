@@ -17,7 +17,7 @@ public class WebView_Activity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         setContentView(webView);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://yanbo.ee.ncku.edu.tw/home");
+        webView.loadUrl("http://2017.igem.org/Team:NCKU_Tainan");
     }
 
     @Override
