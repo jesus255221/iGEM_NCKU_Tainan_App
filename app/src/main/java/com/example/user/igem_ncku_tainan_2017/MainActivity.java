@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectItem(int position) {//Item selected call fragment
         currentPosition = position;//Synchornize the position of the current position
-        Fragment fragment;
+        Fragment fragment = new HomeFragment();
         switch (position) {
             case 0:
                 fragment = new HomeFragment();
@@ -153,16 +153,28 @@ public class MainActivity extends AppCompatActivity {
             case 2:
                 fragment = new BoatFragment();
                 break;
-            default:
-                fragment = new HomeFragment();
+            case 3:
+                startActivity(new Intent(getApplicationContext(), WebView_Activity.class));
+                break;
+            case 4:
+                startActivity(new Intent(getApplicationContext(), ReportWaterQuality.class));
+                break;
+            case 5:
+                startActivity(new Intent(getApplicationContext(), Forum.class));
+                break;
+//            default:
+//                fragment = new HomeFragment();
         }
         //Fragment trade
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, fragment, "visible_fragment");
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
-        setActionBarTitle(position);
+        if (getFragmentManager().findFragmentById(R.id.content_frame) != fragment
+                && position < 3) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment, "visible_fragment");
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
+            setActionBarTitle(position);
+        }
         drawerLayout.closeDrawer(drawerListview);
     }
 

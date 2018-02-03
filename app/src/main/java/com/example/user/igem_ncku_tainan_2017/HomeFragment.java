@@ -37,8 +37,8 @@ public class HomeFragment extends Fragment {
         cardview_titles[3] = "水質回報";
         cardview_titles[4] = "論壇";
         int[] icon = new int[5];
-        icon[0] = R.drawable.device;
-        icon[1] = R.drawable.boat;
+        icon[0] = R.drawable.ic_toys_black_24dp;
+        icon[1] = R.drawable.ic_colorize_black_24dp;
         icon[2] = R.drawable.ic_web_black_24dp;
         icon[3] = R.drawable.ic_reply_all_black_24dp;
         icon[4] = R.drawable.ic_featured_play_list_black_24dp;

@@ -32,16 +32,16 @@ public class BoatFragment extends Fragment {
                 R.layout.fragment_boat, container, false);
         String[] titles = new String[5];
         titles[0] = "pH值";
-        titles[1] = "溫度";
+        titles[1] = "水溫";
         titles[2] = "硝酸鹽濃度";
-        titles[3] = "GPS資料";
-        titles[4] = "硝酸鹽地圖";
+        titles[3] = "路徑紀錄";
+        titles[4] = "水質地圖";
         int[] icons = new int[5];
-        icons[0] = R.mipmap.line_chart;
-        icons[1] = R.mipmap.line_chart;
-        icons[2] = R.mipmap.nitrate;
-        icons[3] = R.mipmap.cursor;
-        icons[4] = R.mipmap.cursor;
+        icons[0] = R.drawable.ic_straighten_black_24dp;
+        icons[1] = R.drawable.ic_insert_chart_black_24dp;
+        icons[2] = R.drawable.ic_show_chart_black_24dp;
+        icons[3] = R.drawable.ic_my_location_black_24dp;
+        icons[4] = R.drawable.ic_map_black_24dp;
         MyAdapter adapter = new MyAdapter(titles, icons);
         adapter.setListener(new MyAdapter.Listener() {
             @Override

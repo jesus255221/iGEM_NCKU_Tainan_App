@@ -43,7 +43,7 @@ public class NotificationService extends IntentService {
         PendingIntent pendingIntent =
                 stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("NO Problem")
                 .setContentText("It is time to clean the device")
                 .setAutoCancel(true)

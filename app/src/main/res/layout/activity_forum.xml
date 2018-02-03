@@ -9,39 +9,50 @@
     tools:context="com.example.user.igem_ncku_tainan_2017.Forum">
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/ic_send_black_24dp"
-        android:id="@+id/fab"
-        android:tint="@android:color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:src="@drawable/ic_send_black_24dp"
+        android:tint="@android:color/white"
         app:fabSize="mini" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/fab"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@id/fab">
 
         <EditText
+            android:id="@+id/input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Message"
-            android:id="@+id/input"
-            />
+            android:hint="Message" />
     </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/send_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/fab"
+        android:clickable="true"
+        android:src="@drawable/ic_camera_alt_black_24dp"
+        android:tint="@android:color/white"
+        app:fabSize="mini"
+        />
+
     <ListView
+        android:id="@+id/list_of_messages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:layout_above="@id/fab"
-        android:dividerHeight="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="16dp"
         android:divider="@android:color/transparent"
-        android:id="@+id/list_of_messages"
-        android:layout_marginBottom="16dp"/>
+        android:dividerHeight="16dp" />
 </RelativeLayout>

@@ -5,9 +5,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="titles">
-        <item>Home</item>
-        <item>Regulator</item>
-        <item>Boat</item>
+        <item>首頁</item>
+        <item>調控槽</item>
+        <item>偵測船</item>
+        <item>官網</item>
+        <item>水質回報</item>
+        <item>論壇</item>
     </string-array>
 
     <string name="open_drawer">Open drawer</string>

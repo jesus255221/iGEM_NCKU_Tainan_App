@@ -7,12 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="5dp"
-        card_view:cardCornerRadius="5dp">
+        card_view:cardCornerRadius="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
 
         <TextView
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="You will have to change the material of regulator every day!"
+            android:text="請每天更換調控槽過濾網"
             android:textColor="#19B3B6"
             android:textSize="20dp"
             android:gravity="center"
