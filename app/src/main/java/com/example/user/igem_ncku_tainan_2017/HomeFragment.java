@@ -31,11 +31,11 @@ public class HomeFragment extends Fragment {
         recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_home, container, false);
         String[] cardview_titles = new String[5];
-        cardview_titles[0] = "調控槽";
-        cardview_titles[1] = "偵測船";
-        cardview_titles[2] = "官網";
-        cardview_titles[3] = "水質回報";
-        cardview_titles[4] = "論壇";
+        cardview_titles[0] = "Regulation Box";
+        cardview_titles[1] = "Sensing Boat";
+        cardview_titles[2] = "Official Website";
+        cardview_titles[3] = "Report Water \n      Quality";
+        cardview_titles[4] = "Forum";
         int[] icon = new int[5];
         icon[0] = R.drawable.ic_toys_black_24dp;
         icon[1] = R.drawable.ic_colorize_black_24dp;

@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">NCKU-Tainan 水質監測系統</string>
+    <string name="app_name">NCKU-Tainan Water Monitor System</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="titles">
-        <item>首頁</item>
-        <item>調控槽</item>
-        <item>偵測船</item>
-        <item>官網</item>
-        <item>水質回報</item>
-        <item>論壇</item>
+        <item>Main Page</item>
+        <item>Regulation Box</item>
+        <item>Sensing Boat</item>
+        <item>Official Website</item>
+        <item>Report Water Quality</item>
+        <item>Forum</item>
     </string-array>
 
     <string name="open_drawer">Open drawer</string>
@@ -18,16 +18,13 @@
     <string name="title_activity_maps">Map</string>
 
     <string-array name="environment_incidents">
-        <item>水面油汙</item>
-        <item>臭味</item>
-        <item>水面結冰</item>
-        <item>水溫</item>
-        <item>冰層厚度</item>
+        <item>surface scum</item>
+        <item>trash, oil or other visible pollution</item>
+        <item>water surface frozen</item>
     </string-array>
     <string-array name="biological_incidents">
-        <item>藻華</item>
-        <item>魚群暴斃</item>
-        <item>外來物種入侵</item>
+        <item>presence of algae blooms</item>
+        <item>presence of a fish kill</item>
     </string-array>
     <string-array name="numbers_for_rating">
         <item>1</item>

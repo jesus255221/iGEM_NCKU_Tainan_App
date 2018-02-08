@@ -106,47 +106,25 @@ public class Forum extends AppCompatActivity {
 
     private void displayChatMessages() {
         ListView listOfMessages = (ListView) findViewById(R.id.list_of_messages);
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef =
-                storage.getReferenceFromUrl("gs://igemnckutainanapp.appspot.com");
-        StorageReference islandRef = storageRef.child("123.jpg");
-
-        final long ONE_MEGABYTE = 1024 * 1024;
-        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class,
+                R.layout.message, FirebaseDatabase.getInstance().getReference()) {
             @Override
-            public void onSuccess(byte[] bytes) {
-                // Data for "images/island.jpg" is returns, use this as needed
-                final Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                adapter = new FirebaseListAdapter<ChatMessage>(Forum.this, ChatMessage.class,
-                        R.layout.message, FirebaseDatabase.getInstance().getReference()) {
-                    @Override
-                    protected void populateView(View v, ChatMessage model, int position) {
-                        ImageView imageView = (ImageView) v.findViewById(R.id.image_view);
-                        // Get references to the views of message.xml
-                        TextView messageText = (TextView) v.findViewById(R.id.message_text);
-                        TextView messageUser = (TextView) v.findViewById(R.id.message_user);
-                        TextView messageTime = (TextView) v.findViewById(R.id.message_time);
+            protected void populateView(View v, ChatMessage model, int position) {
+                // Get references to the views of message.xml
+                TextView messageText = (TextView) v.findViewById(R.id.message_text);
+                TextView messageUser = (TextView) v.findViewById(R.id.message_user);
+                TextView messageTime = (TextView) v.findViewById(R.id.message_time);
 
-                        imageView.setImageBitmap(bitmap);
-                        // Set their text
-                        messageText.setText(model.getMessageText());
-                        messageUser.setText(model.getMessageUser());
+                // Set their text
+                messageText.setText(model.getMessageText());
+                messageUser.setText(model.getMessageUser());
 
-                        // Format the date before showing it
-                        messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
-                                model.getMessageTime()));
-                    }
-                };
-
+                // Format the date before showing it
+                messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
+                        model.getMessageTime()));
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-            }
-        });
+        };
         listOfMessages.setAdapter(adapter);
-
     }
 
     @Override

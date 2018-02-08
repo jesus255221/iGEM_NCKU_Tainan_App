@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "202778871360",
+    "firebase_url": "https://igemnckutainanapp.firebaseio.com",
+    "project_id": "igemnckutainanapp",
+    "storage_bucket": "igemnckutainanapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202778871360:android:72621cfac31a1738",
+        "android_client_info": {
+          "package_name": "com.example.user.igem_ncku_tainan_2017"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202778871360-7o8reauk0jknejbhgl4iole8b8a77tmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE-ggoziVLKhxqPZT6QUxoKY8mulRUIws"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

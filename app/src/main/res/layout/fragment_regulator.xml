@@ -17,7 +17,7 @@
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="請每天更換調控槽過濾網"
+            android:text="Please replace the filter of regulation box every day!"
             android:textColor="#19B3B6"
             android:textSize="20dp"
             android:gravity="center"

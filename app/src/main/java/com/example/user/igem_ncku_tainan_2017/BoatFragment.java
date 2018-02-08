@@ -31,11 +31,11 @@ public class BoatFragment extends Fragment {
         recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_boat, container, false);
         String[] titles = new String[5];
-        titles[0] = "pH值";
-        titles[1] = "水溫";
-        titles[2] = "硝酸鹽濃度";
-        titles[3] = "路徑紀錄";
-        titles[4] = "水質地圖";
+        titles[0] = "pH Value";
+        titles[1] = "Water Temp(℃)";
+        titles[2] = "Nitrate(ppm)";
+        titles[3] = "Path Record";
+        titles[4] = "Water Quality Map";
         int[] icons = new int[5];
         icons[0] = R.drawable.ic_straighten_black_24dp;
         icons[1] = R.drawable.ic_insert_chart_black_24dp;
