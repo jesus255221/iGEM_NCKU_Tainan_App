@@ -35,6 +35,7 @@ public class HomeFragment extends Fragment {
         cardview_titles[1] = "Boat";
         cardview_titles[2] = "Official WebSite";
         cardview_titles[3] = "Report water quality";
+
         int[] icon = new int[4];
         icon[0] = R.drawable.device;
         icon[1] = R.drawable.boat;

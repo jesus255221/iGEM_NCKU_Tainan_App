@@ -1,5 +1,7 @@
 package com.example.user.igem_ncku_tainan_2017;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.support.v7.widget.CardView;
@@ -10,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.File;
+import android.content.res.AssetManager;
 
 /**
  * Created by user on 04/09/2017.
@@ -40,6 +44,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         imageView.setImageDrawable(drawable);
         TextView textView = (TextView) cardView.findViewById(R.id.card_view_title);
         textView.setText(cardViewTitles[position]);
+
+
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
